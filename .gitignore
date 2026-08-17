@@ -3,8 +3,8 @@
 ##
 ## Get latest from `dotnet new gitignore`
 
-./thanks-bot-prod-153b434ab618.json
-./ReadMeDev.md
+thanks-bot-prod-153b434ab618.json
+ReadMeDev.md
 # dotenv files
 .env
 
