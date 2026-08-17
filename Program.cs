@@ -147,8 +147,8 @@ app.MapPost("/", async ([FromBody] JsonNode payload) =>
     // その他のイベントやコマンドの場合のフォールバック
     return Results.Ok(new { text = "コマンドを受信しました。" });
 });
-
-app.Run();
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+app.Run($"http://0.0.0.0:{port}");
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
