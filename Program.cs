@@ -40,6 +40,8 @@ if (FirebaseApp.DefaultInstance == null)
         Credential = GoogleCredential.GetApplicationDefault()
     });
 }
+var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
+builder.WebHost.UseUrls($"http://0.0.0.0:{port}");
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -147,8 +149,7 @@ app.MapPost("/", async ([FromBody] JsonNode payload) =>
     // その他のイベントやコマンドの場合のフォールバック
     return Results.Ok(new { text = "コマンドを受信しました。" });
 });
-var port = Environment.GetEnvironmentVariable("PORT") ?? "8080";
-app.Run($"http://0.0.0.0:{port}");
+app.Run();
 
 record WeatherForecast(DateOnly Date, int TemperatureC, string? Summary)
 {
